@@ -37,10 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'solveur',
-    'reconn_ecriture',
+    'reconn_equation',
     'model_llm',
-    'auth',
+    'connect',
+   
 ]
 
 MIDDLEWARE = [

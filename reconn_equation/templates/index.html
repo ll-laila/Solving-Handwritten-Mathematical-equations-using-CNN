@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IC</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        #root, html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            outline: none;
+            box-sizing: border-box;
+        }
+        #container {
+            margin-top: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .draw {
+            border: 1px solid #000;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body onload="onLoad()">
+    <div id="container">
+        <div id="operation" class="draw"></div>
+        <button id="clear" type="button">Clear</button><br>
+        <button id="predict-btn" type="button">Predict</button>
+    </div>
+    <div style="margin-top: 50px; text-align: center;">
+        <div>
+            Operation:
+            <div id="operation-container"></div>
+        </div>
+        <div style="margin-top: 25px">
+            Solution:
+            <div id="solution-container"></div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script>
+        let p5Obj;
+        const s = p => {
+            p.setup = () => {
+                p.createCanvas(600, 200);
+                p.background(255);
+                document.getElementById('clear').onclick = () => {
+                    p.background(255);
+                }
+            }
+            p.draw = () => {}
+            p.mouseDragged = () => {
+                p.stroke(0);
+                p.strokeWeight(3);
+                p.line(p.mouseX, p.mouseY, p.pmouseX, p.pmouseY);
+            }
+        }
+        function onLoad() {
+            p5Obj = new p5(s, 'operation');
+        }
+        $('#predict-btn').click(() => {
+            const canvasD1 = document.getElementById('defaultCanvas0');
+            const base64CanvasD1 = canvasD1.toDataURL('image/png').replace('data:image/png;base64,', '');
+            const data = {
+                operation: base64CanvasD1,
+                csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val()
+            };
+            $.ajax({
+                url: '/predict/',
+                type: 'POST',
+                data: data,
+                success: function(data) {
+                    $('#operation-container').html(data.operation);
+                    $('#solution-container').html(data.solution);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                    alert("error");
+                }
+            });
+        });
+    </script>
+    <!-- CSRF Token -->
+    <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+</body>
+</html>

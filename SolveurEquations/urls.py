@@ -19,8 +19,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('auth/', include('auth.urls')),
-    path('solveur/', include('solveur.urls')),
-    path('reconn_ecriture/', include('reconn_ecriture.urls')),
+    path('', include('reconn_equation.urls')),
     path('model_llm/', include('model_llm.urls')),
+     path('connect/', include('connect.urls')),
 ]
