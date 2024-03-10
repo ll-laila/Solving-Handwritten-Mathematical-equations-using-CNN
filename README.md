@@ -8,7 +8,3 @@ https://www.kaggle.com/datasets/xainano/handwrittenmathsymbols.
 # Les Technologies utilisés
    TensorFlow / Keras / Python / Django / OpenCv
 
-# Instalation  
-pip install keras                                                                                                                                                                                               
-pip install tensorflow
-
