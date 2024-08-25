@@ -1,14 +1,14 @@
 
-# Solveur d'Équations Mathématiques par Reconnaissance de l'Écriture Manuscrite avec CNN
-Il s'agit d'une application web interactive permettant aux utilisateurs de résoudre des équations mathématiques en soumettant des images contenant des équations manuscrites (chiffres et symboles mathématique). L'application utilise CNN spécifiquement entraîné pour la résolution d'équations mathématiques,. L'objectif est de créer une interface conviviale permettant aux utilisateurs d'écrire leurs équations manuscrites, de les soumettre sous forme d'images et d'obtenir les solutions calculées en retour.
+# Handwriting Recognition Math Equation Solver with CNN
+It is an interactive web application allowing users to solve mathematical equations by submitting images containing handwritten equations (mathematical numbers and symbols). The application uses CNN specifically trained for solving mathematical equations.
+The goal is to create a user-friendly interface that allows users to write their handwritten equations, submit them as images, and get the calculated solutions back.
 
 # Dataset
-Le modèle de reconnaissance de symboles est entraîné à l'aide de l'ensemble de données de symboles manuscrits de Kaggle.
+The symbol recognition model is trained using Kaggle's handwritten symbol dataset.
 https://www.kaggle.com/datasets/xainano/handwrittenmathsymbols.
 
-# Les Technologies utilisés
+# Technologies used
    TensorFlow / Keras / Python / Django / OpenCv
 
 
-# Solving-Handwritten-Mathematical-equations-using-CNN
 
